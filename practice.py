@@ -1,3 +1,5 @@
+#20241003 
+
 # 2-1. 숫자 자료형
 # 파이썬을 실행할 때는 무조건 저장하고 실행하기! ctrl + s: 저장
 
@@ -61,7 +63,7 @@ print(name +"는 어른일까용? " + str(is_adult))
 
 
 
-# 2-6 퀴즈
+# 2-6 퀴즈 # 1
 
 # 변수를 이용하여 다음 문장 출력
 # 변수명: station
@@ -183,7 +185,7 @@ print(randint(1, 45)) # 1 ~ 45 이하의 임의의 값 생성
 
 
 
-# 3-5. 퀴즈
+# 3-5. 퀴즈 # 2
 ''' 
 Quiz) 당신은 최근에 코딩 스터디 모임을 새로 만들었습니당
 월 4회 스터디를 하는데, 3번은 온라인으로 하고, 
@@ -209,6 +211,219 @@ date = randint(4, 28)
 print("오프라인 스터디 모임 날짜는 매월 " + str(date) + "일로 선정되었습니다.")
 
 
+
+
+
+#20241004
+
+
 # 4-1. 문자열
+
+sentence = '나는 소녀입니당' #sentence: 문자열
+print(sentence)
+
+sentence2 = "파이썬은 접근하기 쉽습니당"
+print(sentence2) 
+
+sentence3 = """
+나는 소녀이고, 
+파이썬은 접근하기 쉽습니당
+"""
+print(sentence3)
+
+
+
+# 4-2. 슬라이싱
+
+jumin = "241004-1234567" # 예제: 주민등록번호 (존재 X)
+
+print("성별 : " + jumin[7])
+#index는 항상 0부터 시작 - 2는 0번째!
+print("연도 : " + jumin[0:2])
+# :(콜론) - 0번째부터 2번째 직전까지 (0, 1의 값만 가져옴)
+print("월 : " + jumin[2:4]) # 2 부터 4 직전까지 (2, 4) 
+print("일 : " + jumin[4:6]) # 4 부터 6 직전까지 (4, 6)
+
+print("생년월일 : " + jumin[:6]) # :6   # 처음부터 6 직전까지
+
+#print("뒤 7자리 :" + Jumin[7:14]) 
+print("뒤 7자리 :" + jumin[7:]) # 7:   # 7 부터 끝까지 #윗문장이랑 동일
+
+print("뒤 7자리 (뒤에부터) : " + jumin[-7:]) # 맨 뒤에 7번째부터 끝까지
+
+
+
+# 4-3. 문자열 처리 함수
+
+python = "Python is Amazing"
+
+print(python.lower()) # lower: 모든 문자 다 소문자
+print(python.upper()) # upper: 모든 문자 다 대문자
+
+print(python[0].isupper())
+# isupper: 파이썬의 첫 문자가 대문자인지 알려줌
+# 맞으면 true, 틀리면 false
+# 맞으니까 답은 true 나옴
+
+print(len(python))
+# len : 전체 문자열의 길이 
+
+# "Python is Amazing"에서 Python 이라는 글자를 찾아서 바꾸고 싶을때
+print(python.replace("Python", "Java"))
+# replace : 값을 다른 값으로 쉽게 바꿔줌
+
+index = python.index("n")
+print(index)
+# index: 어떤 문자가 어느 위치에 있는지 알 수 있음
+
+
+# index를 찾는데 그 다음 위치부터 찾을 때
+index = python.index("n", index + 1) 
+# 앞에서 찾은 5라는 위치에서 + 1 => 6번째 위치부터 쭉 n을 찾음
+print(index)
+
+print(python.find("n"))
+print(python.find("Java"))
+# find: 원하는 문자 찾기 
+# find에서는 내가 원하는 값이 없을 때 -1 반환 / 프로그램은 계속 진행됨
+
+'''
+# print(python.index("Java")) 
+# Print("hi")
+
+# index에서는 오류 - 파이썬이라는 변수에 자바가 없음
+# index에서는 뒤에 문장이 있어도 뒷문장이 출력이 안됨
+'''
+
+print(python.count("n"))
+# count : 총 몇번 등장하는지 세어줌 
+
+
+
+# 4-4. 문자열 포맷
+
+
+print("a" + "b")
+# + : 합쳐줌
+
+print("a", "b")
+# ,(콤마): 띄어쓰기 해줌 
+
+# 방법 1: % 이용하기
+
+print("나는 %d살입니당." % 21) # d는 정수
+print("나는 %s을 좋아해용." % "파이썬") # s: string - 문자열
+print("Apple 은 %c로 시작해요." % "A") # c: 캐릭터 - 한글자만 출력
+
+# %s 정수, 하나의 문자 상관없이 각 출력을 잘 할 수 있음
+print("나는 %s살입니당." % 21)
+
+# 값을 2개를 넣고 싶을 때 / 괄호로 감싸기
+print("나는 %s색과 %s색을 좋아해용" % ("연분홍", "연보라"))
+
+
+
+# 방법 2: {}, fomat 이용하기
+print("나는 {}살입니당.".format(21))
+
+# 값을 2개를 넣고 싶을 때 / 괄호로 감싸기
+print("나는 {}색과 {}색을 좋아해용".format("연분홍", "연보라"))
+
+#중괄호: 연속적 / # 중괄호 안의 숫자: 순번에 맞게 나옴
+print("나는 {0}색과 {1}색을 좋아해용".format("연분홍", "연보라"))
+print("나는 {1}색과 {0}색을 좋아해용".format("연분홍", "연보라"))
+
+
+# 방법 3: 설정한 변수를 중괄호 안에 넣기 
+print("나는 {age}살이며, {color}색을 좋아해요.".format(age = 21, color = "연보라"))
+
+print("나는 {age}살이며, {color}색을 좋아해요.".format(color = "연보라", age = 21)) # 순서 바꾸기
+
+
+# 방법 4: 직접 변수 선언 하고, print에서 f로 시작 
+# f 다음 ""문장의  중괄호 값은 실제 변수에 저장된 값을 그대로 쓸 수 있음 
+
+age = 21
+color = "연분홍"
+print(f"나는 {age}살이며, {color}색을 좋아해용.")
+
+
+# 4-5. 탈출 문자 
+
+print("백문이 불여일견 백견이 불여일타")
+
+# 백번 보는 것보다 한번 보는게 낫고, 
+# 백번 보는 것보다 한번 직접 처보는게 낫다.
+
+
+# \n (역슬러쉬 n) : 줄바꿈
+print("백문이 불여일견\n백견이 불여일타")
+
+# 저는 "지유경"입니당.
+# print("저는 "지유경"입니당.") 이러면 오류!
+
+print("저는 '지유경'입니당.")
+print('저는 "지유경"입니당.')
+
+# 이렇게 해도 괜찮지만 탈출문자 \ (역슬러쉬)를 앞에 넣어주자!
+
+# \" \' : 문장 내에서 따옴표
+print("저는 \"지유경\"입니당.")
+print("저는 \'지유경\'입니당.")
+
+# \\ : 문장 내에서 하나의 \로 바뀜
+# print("C:\Users\user>") : 오류
+print("C:\\Users\\user>")
+
+# \r : 커서를 맨 앞으로 이동
+# 커서: 깜빡깜빡이는거, 내 위치
+print("Red Apple\rPine")
+
+# \b : 벡스페이스 (한 글자 삭제)
+print("Redd\bApple")
+
+# \t : 탭
+print("Red\tApple")
+
+
+# 4-6. 퀴즈 # 3
+
+'''
+Q. 사이트 별로 비밀번호를 만들어 주는 프로그램을 작성하시오
+
+예) http://naver.com
+규칙1 : http:// 부분은 제외 => naver.com
+규칙2 : 처음 만나는 점(.) 이후 부분은 제외 => naver
+규칙3 : 남은 글자 중 처음 세자리 + 글자 갯수 + 글자 내 'e' 갯수 + "!" 로 구성
+
+ex) (nav) (5) (1) (!)
+예) 생성된 비밀번호 : nav51!
+'''
+#나의 답변
+'''
+naver = "naver.com"
+Print(naver)
+Print((naver[0, 2])+(naver.len("naver"))+(naver.count("e"))+"!")
+
+모르겠당 난 할 수 있는 최선을 다했당....
+'''
+
+# 정답
+
+url = "http://naver.com"
+my_str = url.replace("http://", "") # 규칙 1
+# print(my_str)
+my_str = my_str[:my_str.index(".")] # 규칙 2
+# my_str[0:5] -> 0 ~ 5 직전까지. (0, 1, 2, 3, 4)
+#print(my_str)
+password = my_str[:3] + str(len(my_str)) + str(my_str.count("e")) + "!"
+print("{0}의 비밀번호는 {1} 입니다.".format(url, password))
+
+# 다음, 구글, 유튜브 링크를 했을때도 다 다른 비밀번호가 나옴!
+
+
+
+# 5-1. 리스트
+
 # 파이썬 코딩 무료 강의 (기본편) - 6시간 뒤면 여러분도 개발자가 될 수 있어요 [나도코딩]
 # 내일 해야징~ 
