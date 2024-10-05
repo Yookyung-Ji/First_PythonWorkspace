@@ -20,7 +20,7 @@ print("ㅋㅋㅋㅋㅋㅋㅋㅋㅋ")
 print("ㅋ"*9)
 
 
-#2-3. boolean 자료형
+# 2-3. boolean 자료형
 # 참 / 거짓
 
 print(5 > 10)
@@ -32,7 +32,7 @@ print(not False)
 print(not (5 > 10))
 
 
-#2-4. 변수
+# 2-4. 변수
 
 #애완동물을 소개해 주세요~
 
@@ -49,7 +49,7 @@ print(name ,"는 ", age ,"살이며, " , hobby , "을 엄청 좋아해용")
 print(name +"는 어른일까용? " + str(is_adult))
 
 
-# 주석
+# 2-5. 주석
 # 코드 안에 포함은 되지만, 실제로 실행이 안되는 문장 (무시되는 문장)
 
 #개발자와의 소통, 복잡한 프로그램 만들 시 적용한다.
@@ -422,8 +422,220 @@ print("{0}의 비밀번호는 {1} 입니다.".format(url, password))
 # 다음, 구글, 유튜브 링크를 했을때도 다 다른 비밀번호가 나옴!
 
 
+# 20211005
 
 # 5-1. 리스트
+
+# 리스트? 순서가 주는 객체의 집합
+
+# 지하철 칸 별로 10명, 20명, 30명
+'''
+subway1 = 10
+subway2 = 20
+subway3 = 30
+'''
+subway = [10, 20, 30]
+print(subway)
+
+subway = [ "유재석", "조세호", "박명수"]
+print(subway)
+
+# 조세호씨가 몇 번째 칸에 타고 있는가?
+print(subway.index("조세호"))
+# index는 0부터 시작
+# 즉 0, 1 번째이기 때문에 결과값은 1이 나옴!
+
+
+# 하하씨가 다음 정류장에서 다음 칸에 탐
+subway.append("하하")
+print(subway)  # append : 맨 뒤에 붙음
+
+
+# 정형돈씨를 유재석 / 조세호 사이에 태워봄
+subway.insert(1, "정형돈")
+print(subway)   # insert : 사이에 삽입
+
+# 지하철에 있는 사람을 한 명씩 뒤에서 꺼냄
+print(subway.pop()) # pop: 뒤에서부터 하나씩 뺌
+print(subway) 
+
+# print(subway.pop()) # pop: 뒤에서부터 하나씩 뺌
+# print(subway) 
+
+# print(subway.pop()) # pop: 뒤에서부터 하나씩 뺌
+# print(subway) 
+
+
+
+# 같은 이름의 사람이 몇 명 있는지 확인
+
+subway.append("유재석") # 유재석이 맨 뒤로 더해짐
+print(subway)
+print(subway.count("유재석")) # 결과값은 2
+
+
+# 정렬도 가능 - 정렬 : sort
+
+num_list = [5,2,4,3,1]
+num_list.sort()
+print(num_list)
+
+
+# 순서 뒤집기 가능 - 순서 뒤집기: reverse
+num_list.reverse()
+print(num_list)
+
+# 모두 지우기 - clear
+num_list.clear()
+print(num_list)
+
+# list: 
+# 자료형에 구애받지 않고 섞어서 쓸 수 있음 
+# 같은 리스트끼리 확장 가능 
+
+
+# 다양한 자료형 함께 사용
+num_list = [5,2,4,3,1]
+mix_list = ["조세호", 20, True]
+# print(mix_list)
+
+
+# 리스트 확장 : extend
+num_list.extend(mix_list)
+print(num_list)
+
+
+
+# 5-2. 사전
+
+# 키에 대한 중복 허용 X
+# 목욕탕 키를 생각하자
+# 사전: cabinet
+
+cabinet = {3: "유재석", 100:"김태호"}
+
+print(cabinet[3])
+print(cabinet[100]) #방법 1 : 대괄호
+
+print(cabinet.get(3)) # 방법 2 : 소괄호
+
+# 아무에게도 할당되지 않은 열쇠는 오류남
+# print(cabinet[5]) -> 대괄호로 쓰면 오류
+# print(cabinet.get(5)) -> get 오류. none이라고 뜸
+print("hi")
+
+# 5라는 값을 쓰고 싶을 때
+print(cabinet.get(5))
+print(cabinet.get(5, "사용 가능"))
+print("hi")
+
+# 사전 자료형의 값을 확인하고 싶을 때
+
+print(3 in cabinet) # True
+print(5 in cabinet) # False
+
+# 정수가 아닌 string 도 가능
+
+cabinet = {"A-3": "유재석", "B-100":"김태호"}
+print(cabinet["A-3"])
+print(cabinet["B-100"])
+
+
+# 새로운 손님
+cabinet["A-3"] = "김종국"
+cabinet["C-20"] = "조세호"
+print(cabinet) 
+# 새로운 사람이 왔는데 기존과 같은 키를 쓰면 새로운 사람으로 대체됨
+
+
+# 간 손님  # 키 삭제 : del
+del cabinet["A-3"]
+print(cabinet) 
+
+# 지금 사용중인 key 들만 출력
+print(cabinet.keys()) 
+
+#지금 사용중인 value 들만 출력
+print(cabinet.values())
+
+# key, value 쌍으로 출력
+print(cabinet.items())
+
+# 목욕탕 폐점 / 목욕탕이 문을 닫아요! 그럼 지우자!
+cabinet.clear()
+print(cabinet)
+
+
+
+# 5-3. 튜플 
+# 튜플 : 내용 변경이나 추가 x, 리스트보다 속도 빠름
+# 돈까쓰집 , 메뉴변경 x , 돈까스, 치즈까스만 팜
+
+menu = ("돈까스", "치즈까스")
+print(menu[0])
+print(menu[1])
+
+# menu.add("생선까스") -> 오류
+# 튜플은 add라는 기능 제공 x
+# 고정된 값만 활용
+'''
+name = "김종국"
+age = 20
+hobby = "코딩"
+print(name, age, hobby)
+'''
+
+(name, age, hobby) = ("김종국", 20, "코딩")
+print(name, age, hobby) 
+# 위의 주석 처리 코드랑 결과값 똑같음
+
+
+
+# 5-4. 세트
+
+# 집합 (set) : 중복 x, 순서 x
+my_set = {1,2,3,3,3} # 중복이 안되므로 1,2,3만 출력됨
+print(my_set)
+
+java = {"유재석", "김태호", "양세찬"}
+python = set(["유재석", "박명수"])
+
+# 교집합 (java 와 python 을 모두 할 수 있는 개발자)
+# 둘 다 해야 함!
+print(java & python)
+print(java.intersection(python))
+
+# 합집합 (java 를 할 수 있거나, python 을 할 수 있는 개발자)
+# 둘 중 하나만 해도 괜춘!
+print(java | python)
+print(java.union(python)) 
+# 집합은 순서가 없어서 유재석 글자가 뒤로 갈 수 있음
+# 순서 고정 x
+
+
+# 차집합 
+# (java 는 할 수 있지만, python 은 할 줄 모르는 개발자)
+print(java - python)
+print(java.difference(python))
+# 김태호와 양세찬만 교육시킴
+
+# 교육을 받아서 python 할 줄 아는 사람이 늘어남
+python.add("김태호")
+print(python)
+
+# java를 까먹었음(값을 빼는거: remove)
+java.remove("김태호")
+print(java)
+
+
+
+# 5-5. 자료구조의 변경
+
+
+
+# 5-6. 퀴즈 # 4
+
+
 
 # 파이썬 코딩 무료 강의 (기본편) - 6시간 뒤면 여러분도 개발자가 될 수 있어요 [나도코딩]
 # 내일 해야징~ 
