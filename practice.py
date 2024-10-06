@@ -422,7 +422,7 @@ print("{0}의 비밀번호는 {1} 입니다.".format(url, password))
 # 다음, 구글, 유튜브 링크를 했을때도 다 다른 비밀번호가 나옴!
 
 
-# 20211005
+# 20241005
 
 # 5-1. 리스트
 
@@ -628,12 +628,180 @@ java.remove("김태호")
 print(java)
 
 
-
+# 20241006
 # 5-5. 자료구조의 변경
+
+# 커피숍
+menu = {"커피", "우유", "주스"} #type이 set로 묶임
+print(menu, type(menu)) # {}
+
+menu = list(menu) # type이 list로 묶임
+print(menu, type(menu)) # []
+
+menu = tuple(menu) # type이 tuple로 묶임
+print(menu, type(menu)) # ()
+
+menu = set(menu) # type이 set로 묶임
+print(menu, type(menu))
 
 
 
 # 5-6. 퀴즈 # 4
+
+"""
+Quiz) 당신의 학교에서는 파이썬 코딩 대회를 주최합니다.
+참석률을 높이기 위해 댓글 이벤트를 진행하기로 하였습니다. 
+댓글 작성자를 통해 추첨을 통해 1명은 치킨, 3명은 커피 쿠폰을 받게 됩니다. 
+
+
+조건1: 편의상 댓글은 20명이 작성하였고, 아이디는 1~20 이라고 가정
+조건2: 댓글 내용과 상관없이 무작위로 추첨하되 중복 불가
+조건 3: random 모듈의 shuffle와 sample을 활용
+
+(출력 예제)
+-- 당첨자 발표 --
+치킨 담청자 : 1     3:int
+커피 담청자 : [2, 3, 4]
+-- 축하합니다 --
+
+"""
+
+# (활용 예제)
+'''
+from random import *
+lst = [1,2,3,4,5]
+print(lst) 
+shuffle(lst) # shuffle : list 안의 있는 값을 무작위로 바꿈
+print(lst) 
+print(sample(lst, 1)) # list 중에서 한개를 무작위로 뽑음
+'''
+
+# 내 답변
+'''
+from random import *
+lst = [0, 20]
+print(lst[0:20])
+print(lst)
+
+sample = [0, 20]
+print(lst)
+
+shuffle(lst)
+print(lst)
+print(shuffle(lst[2:5]))
+'''
+# 내 답변
+
+'''
+print("-- 당첨자 발표 --")
+from random import *
+lst = [0, 20]
+print(lst[0:20])
+
+print("치킨 담청자 : " + (lst))
+lst = [0]
+
+print("커피 담청자 : " + shuffle(lst[2:5]))
+print(shuffle(lst))
+
+print("-- 축하합니다 --" + sample(lst, 1))
+# 모르겠당.... 할 수 있는 최선을 다했당....
+'''
+
+# 정답
+from random import *
+users = range(1, 21) # 1부터 20까지 숫자를 생성
+#print(type(users))
+users = list(users)
+#print(type(users))
+
+print(users)
+shuffle(users)
+print(users)
+
+winners = sample(users, 4) # 4명 중에서 1명은 치킨, 3명은 커피
+
+
+print("- 당첨자 발표 --") 
+print("치킨 담청자 : {0}".format(winners[0]))
+print("커피 담청자 : {0}".format(winners[1:]))
+print("# -- 축하합니다 --")
+
+
+
+# 6-1. if
+# 날씨에 따라 다른 준비물을 챙겨야 하는 코드
+
+'''
+Weather = "비"
+if 조건:
+    실행 명령문
+'''
+
+'''
+weather = input("오늘 날씨는 어때용? ")
+if weather == "비" or weather == "눈":
+    print("우산을 챙기세용")
+
+    # 조건에 맞으면 실행, 안맞으면 오류
+    # 만약에 다른 조건 넣고 싶으면 elif (다음 조건 비교)
+
+elif weather == "미세먼지":
+    print("마스크를 챙기세용")
+
+# 비도 없고 마스크도 없으면 else
+
+else:     # else: 위의 조건이 다 안 맞을 때 
+    print("준비물 필요 없어용.")
+
+# 여기서 에러가 나는데 2회독 나중에 한번 더 확인하기 
+'''
+
+temp = int(input("기온은 어때요? "))
+if 30 <= temp:
+    print("너무 더워용. 나가지 마세용. ")
+elif 10 <= temp and temp < 30:
+    print("괜찮은 날씨에용")
+elif 0 <= temp < 10:
+    print("외투를 챙기세용")
+else: 
+    print("너무 추워용. 나가지 마세용")
+
+
+
+# 6-2. for
+
+
+
+
+
+
+# 6-3. while
+
+
+
+
+
+
+# 6-4. continue 와 break
+
+
+
+
+
+
+
+# 6-5.한 줄 for
+
+
+
+
+
+
+# 6-6.퀴즈 # 5
+
+
+
 
 
 
