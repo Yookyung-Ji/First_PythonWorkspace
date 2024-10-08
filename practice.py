@@ -912,35 +912,192 @@ for i in range(1, 51): # 1 ~ 50 이라는 수 (승객)
 print("총 탑승 승객 : 2 분")
 '''
 
+#20241008
 
 # 7-1. 함수
+def open_accont():
+    print("새로운 계좌가 생성되었습니당.")
+# 함수는 정의만 함, 실제로 호출 x
+open_accont() # open_accont() 을 하면 값이 나옴
 
 
 
 # 7-2. 전달값과 반환값
+def deposit(balance, money): # deposit : 임금 함수(잔액, 입금하려는 돈) 
+    print("입금이 완료되었습니당. 잔액은 {0} 원입니당." \
+        .format(balance + money))
+    return balance + money
+
+def withdraw(balnce, money): # withdraw: 출금 함수(잔액, 출금하려는 돈)
+    if balance >= money: # 잔액이 출금보다 많으면
+        print("출금이 완료되었습니당. 잔액은 {0} 원 입니당." \
+            .format(balance))
+        return balance
+
+def withdraw_night(balance, money): # 저녁에 출금
+    commission = 100 # 수수료 100원
+    return commission, balance - money - commission
+
+balance = 0 # 잔액
+balance = deposit(balance, 1000)
+# balance = withdraw(balance, 2000)
+# balance = withdraw(balance, 500)
+commission, balance = withdraw_night(balance, 500)
+print("수수료 {0} 원이며, 잔액은 {1} 원입니당." \
+    .format(commission, balance))
 
 
 
 # 7-3. 기본값
+'''
+# profile 함수, 줄바꿈: \ enter
+
+def profile(name, age, main_lang):
+    print("이름 : {0}\t나이 : {1}\t 주 사용 언어: {2}" \
+        .format(name, age, main_lang))
+
+profile("유재석", 20, "파이썬")
+profile("김태호", 25, "자바")
+'''
+# 같은 학교, 같은 학년, 같은 반, 같은 수업
+
+def profile(name, age=17, main_lang="파이썬"):
+    print("이름 : {0}\t나이 : {1}\t 주 사용 언어: {2}" \
+        .format(name, age, main_lang))
+
+profile("유재석")
+profile("김태호")
 
 
 
 # 7-4. 키워드값
 
+def profile(name, age, main_lang):
+    print(name, age, main_lang)
+
+profile(name="유재석", main_lang="파이썬", age=20)
+profile(main_lang="자바", age=25, name="김태호")
+
 
 
 # 7-5. 가변인자
 
+# def profile(name, age, lang1, lang2, lang3, lang4, lang5):
+#     print("이름 : {0}\t나이 : {1}\t".format(name, age), end=" ")
+#     print(lang1, lang2, lang3, lang4, lang5)
+
+
+def profile(name, age, *language):
+    print("이름 : {0}\t나이 : {1}\t".format(name, age), end=" ")
+    for lang in language:
+        print(lang, end = " ")
+    print()
+
+profile("유재석", 20, "python", "Java", "C", "C++", "C#", "javaScript")
+profile("김태호", 25, "Kotlin", "Swift")
+
 
 
 # 7-6. 지역변수와 전역변수
+# 지역변수: 하나의 함수 안에서만 사용되는 변수
+# 전역변수: 함수에 상관없이 프로그램 전체에서 사용할 수 있는 변수 
+
+gun = 10
+
+def checkpoint(soldiers): # 경계근무
+    global gun # 전역 공간에 있는 gun 사용
+    gun = gun - soldiers
+    print("[함수 내] 남은 총 : {0}".format(gun))
+
+def checkpoint_ret(gun, soldiers): 
+    gun = gun - soldiers # 전역 공간에 있는 gun 사용
+    print("[함수 내] 남은 총 : {0}".format(gun))
+    return gun
+
+print("전체 총 : {0}".format(gun))
+# checkpoint(2) 2명이 경계 근무 나감
+print("남은 총 : {0}".format(gun))
 
 
 
 # 7-7. 퀴즈 #6
+'''
+Quiz) 표준 체중을 구하는 프로그램을 작성하시오
 
+* 표준 체중 : 각 개인의 키에 적당한 체중
+
+(성별에 따른 공식)
+남자 : 키(m) x 키(m) x 22
+여자 : 키(m) x 키(m) x 21
+
+조건1 : 표준 체중은 별도의 함수 내에서 계산
+        * 함수명 : std_weingt
+        * 전달값 : 키(height), 성별(gender)
+조건2 : 표준 체중은 소수점 둘째자리까지 표시
+
+(출력 예제)
+키 175cm 남자의 표준 체중은 67.38kg 입니다.
+'''
+
+# 정답
+def std_weight(height, gender): # 키 m 단위 (실수), 성별 "남자" / "여자"
+    if gender == "남자":
+        return height * height * 22
+    else:
+        return height * height * 21
+
+height = 165 # cm 단위
+gender = "여자"
+weight = round(std_weight(height / 100, gender), 2)
+print("키 {0}cm {1}의 표준 체중은 {2}kg 입니다.".format(height, gender, weight))
+
+'''
+# 파이썬 초보 탈출하기 #2 | 디버깅 Debugging
+# 표준 체중 구하기 프로그램
+
+def std_weight(height, gender): # 키 m 단위 (실수), 성별 "남자" / "여자"
+    if gender == "남자":
+        return height * height * 22
+    else:
+        return height * height * 21
+
+height = 175 # cm 단위
+gender = "남성"
+weight = round(std_weight(height / 100, gender), 2)
+print("키 {0}cm {1}의 표준 체중은 {2}kg 입니다.".format(height, gender, weight))
+
+디버깅 (debugging) / 유의어: 오류 수정
+
+만든 프로그램들이 정확한가를 조사하는 과정. 프로그램 순서도를 살피는 검사, 컴파일러를 사용한 검사, 실제 데이터를 사용한 검사의 세 단계로 이루어진다.
+
+나중에 다 보고 차근차근히 해보자~~~
+'''
+
+
+
+# 8-1. 표준입출력
+
+
+
+# 8-2. 다양한 출력포맷
+
+
+
+# 8-3. 파일입출력
+
+
+
+# 8-4. pickle
+
+
+
+# 8-5. with
+
+
+
+# 8-6. 퀴즈 #7
 
 
 
 # 파이썬 코딩 무료 강의 (기본편) - 6시간 뒤면 여러분도 개발자가 될 수 있어요 [나도코딩]
-# 내일 해야징~ 
+# 내일 해야징~  
