@@ -1077,7 +1077,39 @@ print("키 {0}cm {1}의 표준 체중은 {2}kg 입니다.".format(height, gender
 
 # 8-1. 표준입출력
 
+# sep : , 대신에 " "안의 내용을 넣어줌 
+print("Python", "java", "JavaScript", sep=" vs ")
+print("Python", "java", sep=",", end="?") 
+# 문장의 끝 부분을 물음표를 넣어달라~
+print("무엇이 더 재밌을까용?")
+# end 부분: 한 문장으로 합쳐줌
 
+import sys
+print("Python", "Java", file=sys.stdout) # 표준 출력으로 문장이 찍힘
+print("Python", "Java", file=sys.stderr) # 표준 에러로 필요하면 따로 에러 처리 가능
+
+scores = {"수학":0, "영어":50, "코딩": 100}
+for subject, score in scores.items():
+    # print(subject, score)
+# 줄을 맞추고 싶음 : ljust - 왼쪽으로 정렬을 하는데 총 8칸을 확보한 상태에서 왼쪽 정렬을 함
+    print(subject.ljust(8), str(score).rjust(4), sep=":")
+# ljust : 왼쪽 정렬
+# ljust : 오른쪽 정렬
+
+# 은행 대기순번표
+# 001, 002, 003, ...
+for num in range(1, 21):
+    print("대기번호 : " + str(num).zfill(3))
+
+# zfill : 값이 없는 빈 공간에 0을 채우는 것 
+'''
+# 표준 입력 연습
+answer = input("아무 값이나 입력하세요 : ")
+answer = 10
+print(type(answer))
+#print("입력하신 값은 " + answer + "입니다.")
+# 사용자 입력을 통해서 값을 받게 되면 항상 문자열 상태로 저장됨 
+'''
 
 # 8-2. 다양한 출력포맷
 
